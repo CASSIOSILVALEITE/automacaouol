@@ -1,14 +1,13 @@
 Dado('acesso site') do
-     
-    visit('https://www.uol.com.br').load
-    
+    @email = Home.new
+    @email.load
 end
     
 Quando('clico no email') do
-    find_all('.HU_blackBar_listServices__service')[0].click
-    
+    @email.btn_email.click
 end
     
 Entao('valido a pagina do email') do
-    expect(find('#form').text).to include 'Login'
+    @email = Email.new
+    expect(@email.p_login.text).to include 'Login'
 end
